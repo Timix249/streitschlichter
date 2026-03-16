@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Panel</title>
+</head>
+
+<body>
+
+<h1>Admin Panel</h1>
+
+<label>Titel</label>
+<input id="welcomeTitle">
+
+<label>Text</label>
+<textarea id="welcomeText"></textarea>
+
+<label>Team Text</label>
+<textarea id="teamText"></textarea>
+
+<button onclick="saveData()">Speichern</button>
+
+<hr>
+
+<h2>Foto hinzufügen</h2>
+
+<input type="file" id="photoInput">
+
+<button onclick="addPhoto()">Foto hinzufügen</button>
+
+<script>
+
+let data = JSON.parse(localStorage.getItem("siteData"));
+
+document.getElementById("welcomeTitle").value = data.welcomeTitle;
+document.getElementById("welcomeText").value = data.welcomeText;
+document.getElementById("teamText").value = data.teamText;
+
+function saveData(){
+data.welcomeTitle = document.getElementById("welcomeTitle").value;
+data.welcomeText = document.getElementById("welcomeText").value;
+data.teamText = document.getElementById("teamText").value;
+
+localStorage.setItem("siteData", JSON.stringify(data));
+
+alert("Gespeichert!");
+}
+
+function addPhoto(){
+
+const file = document.getElementById("photoInput").files[0];
+const reader = new FileReader();
+
+reader.onload = function(e){
+data.photos.push(e.target.result);
+localStorage.setItem("siteData", JSON.stringify(data));
+alert("Foto hinzugefügt!");
+};
+
+reader.readAsDataURL(file);
+}
+
+</script>
+
+</body>
+</html>
