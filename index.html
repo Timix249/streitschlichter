@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
 <meta charset="UTF-8">
-<title>Streitschlichter – Unsere Schule</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Streitschlichter unserer Schule</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Streitschlichter">
+
+<link rel="apple-touch-icon" href="icon.png">
 
 <style>
 
 body{
 font-family:Arial;
 margin:0;
-background:#f4f4f4;
+background:#f2f2f2;
 }
 
 header{
 background:#2c6cff;
 color:white;
-padding:20px;
 text-align:center;
+padding:20px;
+}
+
+nav{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
 }
 
 nav button{
@@ -26,31 +42,45 @@ color:white;
 font-size:16px;
 margin:10px;
 cursor:pointer;
-font-weight:bold;
 }
 
 section{
 display:none;
-background:white;
-margin:40px auto;
-padding:40px;
+padding:20px;
 max-width:900px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+margin:auto;
 }
 
 section.active{
 display:block;
 }
 
+.card{
+background:white;
+padding:20px;
+margin:20px 0;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+img{
+width:100%;
+border-radius:10px;
+}
+
 button.mail{
 background:#2c6cff;
 color:white;
+padding:15px;
 border:none;
-padding:15px 25px;
+border-radius:8px;
 font-size:16px;
-border-radius:6px;
-cursor:pointer;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
 }
 
 </style>
@@ -64,85 +94,125 @@ cursor:pointer;
 <h1>Streitschlichter unserer Schule</h1>
 
 <nav>
+
 <button onclick="showSection('start')">Start</button>
-<button onclick="showSection('team')">Unser Team</button>
-<button onclick="showSection('hilfe')">Wie wir helfen</button>
+
+<button onclick="showSection('team')">Team</button>
+
+<button onclick="showSection('hilfe')">Hilfe</button>
+
+<button onclick="showSection('fotos')">Fotos</button>
+
 <button onclick="showSection('fragen')">Fragen</button>
+
 </nav>
 
 </header>
 
-
 <section id="start" class="active">
+
+<div class="card">
 
 <h2>Willkommen</h2>
 
 <p>
-Die Streitschlichter helfen Schülern dabei,
-Konflikte friedlich zu lösen.
-Wenn es Streit gibt, könnt ihr zu uns kommen.
-Wir hören euch zu und versuchen gemeinsam eine Lösung zu finden.
+Die Streitschlichter helfen Schülern dabei Konflikte friedlich zu lösen.
+Wenn ihr Streit habt könnt ihr jederzeit zu uns kommen.
 </p>
+
+<img src="images/schule.jpg">
+
+</div>
 
 </section>
 
-
 <section id="team">
+
+<div class="card">
 
 <h2>Unser Team</h2>
 
 <p>
 Unser Team besteht aus Schülern und einer Lehrerin.
-Wir tragen gelbe Westen, damit man uns leicht erkennen kann.
+Wir tragen gelbe Westen damit man uns erkennen kann.
 </p>
 
-<p>
-Ihr findet uns in den Pausen auf dem Schulhof oder in der Pausenhalle.
-</p>
+<img src="images/team.jpg">
+
+</div>
 
 </section>
 
-
 <section id="hilfe">
+
+<div class="card">
 
 <h2>Wie wir helfen</h2>
 
 <p>
-Wenn zwei Schüler Streit haben, sprechen wir mit beiden Seiten.
-Wir versuchen gemeinsam eine Lösung zu finden,
-damit der Streit friedlich beendet wird.
+Wenn zwei Schüler Streit haben sprechen wir mit beiden Seiten
+und versuchen gemeinsam eine Lösung zu finden.
 </p>
 
 <p>
 Alles bleibt vertraulich und respektvoll.
 </p>
 
+</div>
+
 </section>
 
+<section id="fotos">
+
+<div class="card">
+
+<h2>Fotos</h2>
+
+<div class="gallery">
+
+<img src="images/foto1.jpg">
+
+<img src="images/foto2.jpg">
+
+<img src="images/foto3.jpg">
+
+<img src="images/foto4.jpg">
+
+</div>
+
+</div>
+
+</section>
 
 <section id="fragen">
+
+<div class="card">
 
 <h2>Frage stellen</h2>
 
 <p>
-Wenn du eine Frage hast oder Hilfe brauchst,
-kannst du uns eine E-Mail schicken.
+Wenn du Hilfe brauchst kannst du uns eine E-Mail schreiben.
 </p>
 
-<a href="streitschlichter5@gmail.com">
-<button class="mail">Frage senden</button>
+<a href="mailto:streitschlichter@schule.de">
+
+<button class="mail">
+
+E-Mail schreiben
+
+</button>
+
 </a>
 
-</section>
+</div>
 
+</section>
 
 <script>
 
 function showSection(id){
 
-document.querySelectorAll("section").forEach(section=>{
-section.classList.remove("active")
-})
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"))
 
 document.getElementById(id).classList.add("active")
 
@@ -151,4 +221,5 @@ document.getElementById(id).classList.add("active")
 </script>
 
 </body>
+
 </html>
