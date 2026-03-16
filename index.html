@@ -19,18 +19,18 @@ padding:20px;
 text-align:center;
 }
 
-nav{
-margin-top:10px;
-}
-
-nav a{
+nav button{
+background:none;
+border:none;
 color:white;
-margin:15px;
+font-size:16px;
+margin:10px;
+cursor:pointer;
 font-weight:bold;
-text-decoration:none;
 }
 
 section{
+display:none;
 background:white;
 margin:40px auto;
 padding:40px;
@@ -39,13 +39,11 @@ border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-img{
-max-width:100%;
-border-radius:10px;
-margin-top:20px;
+section.active{
+display:block;
 }
 
-button{
+button.mail{
 background:#2c6cff;
 color:white;
 border:none;
@@ -53,12 +51,6 @@ padding:15px 25px;
 font-size:16px;
 border-radius:6px;
 cursor:pointer;
-}
-
-footer{
-text-align:center;
-padding:20px;
-color:#666;
 }
 
 </style>
@@ -72,16 +64,16 @@ color:#666;
 <h1>Streitschlichter unserer Schule</h1>
 
 <nav>
-<a href="#start">Start</a>
-<a href="#team">Unser Team</a>
-<a href="#hilfe">Wie wir helfen</a>
-<a href="#fragen">Fragen</a>
+<button onclick="showSection('start')">Start</button>
+<button onclick="showSection('team')">Unser Team</button>
+<button onclick="showSection('hilfe')">Wie wir helfen</button>
+<button onclick="showSection('fragen')">Fragen</button>
 </nav>
 
 </header>
 
 
-<section id="start">
+<section id="start" class="active">
 
 <h2>Willkommen</h2>
 
@@ -91,8 +83,6 @@ Konflikte friedlich zu lösen.
 Wenn es Streit gibt, könnt ihr zu uns kommen.
 Wir hören euch zu und versuchen gemeinsam eine Lösung zu finden.
 </p>
-
-<img src="images/team.jpg">
 
 </section>
 
@@ -109,8 +99,6 @@ Wir tragen gelbe Westen, damit man uns leicht erkennen kann.
 <p>
 Ihr findet uns in den Pausen auf dem Schulhof oder in der Pausenhalle.
 </p>
-
-<img src="images/westen.jpg">
 
 </section>
 
@@ -142,17 +130,25 @@ kannst du uns eine E-Mail schicken.
 </p>
 
 <a href="mailto:streitschlichter@schule.de">
-<button>Frage senden</button>
+<button class="mail">Frage senden</button>
 </a>
 
 </section>
 
 
-<footer>
+<script>
 
-<p>Streitschlichter Team – Unsere Schule</p>
+function showSection(id){
 
-</footer>
+document.querySelectorAll("section").forEach(section=>{
+section.classList.remove("active")
+})
+
+document.getElementById(id).classList.add("active")
+
+}
+
+</script>
 
 </body>
 </html>
